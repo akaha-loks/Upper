@@ -22,9 +22,12 @@ public class PlatformController : MonoBehaviour
             transform.position += Vector3.right * moveDirection * moveSpeed * Time.deltaTime;
         }   
     }
-    public void StopMovement() => hasToMove = false;
-
-    private void OnBecameInvisible()
+    public void StopMovement()
+    {
+        hasToMove = false;
+        Invoke("DestroyPlatform", 10f);
+    }
+    private void DestroyPlatform()
     {
         Destroy(gameObject);
     }

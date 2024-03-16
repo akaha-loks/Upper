@@ -12,6 +12,13 @@ public class UI : MonoBehaviour
     public void LoadSceneName(string scene)
     {
         SceneManager.LoadScene(scene);
-
+    }
+    public void StopGame()
+    {
+        Time.timeScale = 0;
+    }
+    public void PlayGame()
+    {
+        Time.timeScale = 1;
     }
 }
