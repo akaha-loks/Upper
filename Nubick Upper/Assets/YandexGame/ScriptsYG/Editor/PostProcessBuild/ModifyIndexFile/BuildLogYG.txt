@@ -1,2 +1,2 @@
-Build path: D:/Unity/Release/PluginYG/PluginYG
-Build number: 4
+Build path: C:/Users/azapr/OneDrive/Документы/GitHub/Upper/На самый Вверх!
+Build number: 8

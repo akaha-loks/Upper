@@ -16,7 +16,7 @@ PlayerSettings:
   productName: "\u041D\u0430 \u0441\u0430\u043C\u044B\u0439 \u0412\u0432\u0435\u0440\u0445!"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.427451, g: 0.41176474, b: 0.17254902, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.30980393, g: 0.098039225, b: 0.08627451, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -673,7 +673,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Default
+  webGLTemplate: PROJECT:PluginYG
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 0

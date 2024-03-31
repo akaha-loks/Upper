@@ -100,6 +100,7 @@ namespace YG
                 CallInitBaisYG();
                 CallInitYG();
             }
+
         }
 
         [DllImport("__Internal")]

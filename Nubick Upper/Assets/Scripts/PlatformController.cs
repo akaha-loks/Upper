@@ -9,9 +9,11 @@ public class PlatformController : MonoBehaviour
     private GameObject player;
     private int moveDirection;
     private bool hasToMove = true;
+    private float lvl;
 
     private void Awake()
     {
+        moveSpeed = PlayerPrefs.GetFloat("speedPlatform");
         player = GameObject.FindGameObjectWithTag("Player");
         moveDirection = transform.position.x < player.transform.position.x ? 1 : -1;
     }
@@ -24,6 +26,14 @@ public class PlatformController : MonoBehaviour
     }
     public void StopMovement()
     {
+        if(PlayerPrefs.GetFloat("lvl") > 1)
+        {
+            moveSpeed += 0.05f;
+            PlayerPrefs.SetFloat("speedPlatform", moveSpeed);
+        }
+        lvl = PlayerPrefs.GetFloat("lvl");
+        lvl += 0.2f;
+        PlayerPrefs.SetFloat("lvl", lvl);
         hasToMove = false;
         Invoke("DestroyPlatform", 10f);
     }

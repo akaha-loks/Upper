@@ -9,7 +9,7 @@ public class UI : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
-    public void LoadSceneName(string scene)
+    public static void LoadSceneName(string scene)
     {
         SceneManager.LoadScene(scene);
     }

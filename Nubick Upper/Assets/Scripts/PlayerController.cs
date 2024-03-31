@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerController : MonoBehaviour
 {
     public UnityEvent Landed;
     public UnityEvent Dead;
+ 
+
+    [SerializeField] private GameObject spawnPlatform;
 
     [SerializeField] private float jumpForce;
     [SerializeField] private ContactFilter2D platform;
 
+    [SerializeField] private AudioSource ad;
+
     public Rigidbody2D rb;
 
+    private int score;
+
     private bool isOnPlatform => rb.IsTouching(platform);
+
+  
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -26,6 +36,7 @@ public class PlayerController : MonoBehaviour
         if(isOnPlatform == true)
         {
             rb.AddForce(Vector2.up *  jumpForce, ForceMode2D.Impulse);
+            ad.Play();
         }
     }
 
@@ -33,10 +44,22 @@ public class PlayerController : MonoBehaviour
     {
         GameObject collisionObject = collision.gameObject;
 
+        if (collisionObject.CompareTag("StartGame"))
+        {
+            Invoke("Spawn", 2f);
+        }
+
+        if (collisionObject.CompareTag("Finish"))
+        {
+            UI.LoadSceneName("Finish");
+        }
+
         if (collisionObject.transform.parent != null) 
         {
             if(collisionObject.transform.parent.TryGetComponent(out PlatformController platform))
             {
+                score++;
+                PlayerPrefs.SetInt("Score", score);
                 platform.StopMovement();
             }
         }
@@ -49,5 +72,9 @@ public class PlayerController : MonoBehaviour
             collisionObject.tag = "Untagged";
             Landed?.Invoke();
         }
+    }
+    private void Spawn()
+    {
+        spawnPlatform.SetActive(true);
     }
 }
